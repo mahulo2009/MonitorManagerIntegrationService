@@ -1,0 +1,1 @@
+LDLIBS += -lMonitorManagerIntegrationService $(DSLPRO_DEV_LIBS) $(TAO_LIBS) $(SSL_LIBS)

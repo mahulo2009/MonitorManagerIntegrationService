@@ -1,0 +1,22 @@
+// Copyright (c) 2021 Gran Telescopio Canarias, S.A. (GRANTECAN)
+// All Rights Reserved
+
+#ifndef _MONITORMANAGERINTEGRATIONSERVICE_idl_
+#define _MONITORMANAGERINTEGRATIONSERVICE_idl_
+
+#include "DCF.idl"
+
+#pragma prefix "gtc"
+
+module MONITORMANAGERINTEGRATIONSERVICE
+{
+	interface MonitorManagerIntegrationService_ifce : DCF::Device_ifce 
+	{
+		// Specific MonitorManagerIntegrationService operations
+		// Monitorable attributes (device magnitudes)
+		
+		// Configurable attributes (device properties)
+	};
+};
+#endif // _MONITORMANAGERINTEGRATIONSERVICE_idl_ 
+
