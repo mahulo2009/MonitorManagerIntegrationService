@@ -66,7 +66,8 @@ void MonitorManagerIntegrationService::start()
 		
 		createMonitors_();
 		
-		// ## Create other classes required for this Device
+		// ## Create other classes required for this Device		
+		LoadYamlConfiguration();
 		
 		// ## Create other threads required for this Device
 		
@@ -93,7 +94,7 @@ void MonitorManagerIntegrationService::init()
 		goInitialising_();
 		
 		// ## Initialization procedure
-		
+		SubscribeMonitorList();
 		
 		cout << endl << "MonitorManagerIntegrationService READY!!!" << endl << endl;
 		
@@ -264,3 +265,148 @@ char* MonitorManagerIntegrationService::report(short level)
 *************************************************************************
 ************************************************************************/
 	
+//----------------------------------------------------------------------
+// LoadYamlConfiguration
+//----------------------------------------------------------------------
+void MonitorManagerIntegrationService::LoadYamlConfiguration()
+{
+	std::string configFile = monitorsConfigurationPath_;
+	trace_.out("Loading yaml config file -> %s\n", configFile.c_str());
+	
+	try
+	{
+		YAML::Node myNode = YAML::LoadFile(configFile);
+		YAML::Node monitors = myNode["Telemetry"];
+
+		for(auto monitor : monitors)
+		{
+
+			std::string     key	= monitor.first.as<std::string>();
+			MonitorListYaml m	= monitor.second.as<MonitorListYaml>();
+			
+			//Loading the unordered map
+			subscribedMonitors_[key] = m;			
+		}	
+
+		trace_.out("Loading yaml config file -> %s\n", configFile.c_str());
+
+	}
+	catch(const YAML::ParserException& ex)
+	{
+		std::cout << "YAML parser file exception >> " << ex.what() << std::endl;
+		throw;
+	}
+}
+
+void MonitorManagerIntegrationService::SubscribeMonitorList()
+{
+	for (auto monitor : subscribedMonitors_)
+	{
+		auto&       key   = monitor.first;
+		auto&       m     = monitor.second;
+		const char* dev   = m.GetDeviceName();
+		const char* mon   = m.GetMonitorName();
+		const char* units = m.GetUnits();
+
+		try
+		{
+			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
+			subscribeToDataBlocks("Test/InspectorDevice_1","doubleMonitor1");
+		}
+		catch(GCSException& e)
+		{
+			e.addToTrace("TelemetryModuleNRT::SubscribeMonitorList()");
+			logError_("TelemetryModuleNRT::SubscribeMonitorList() exception - %s\n", e.toString());
+			trace_.err("TelemetryModuleNRT::SubscribeMonitorList() exception - %s\n", e.toString());
+			std::cout << "TelemetryModuleNRT::SubscribeMonitorList()" << endl;
+			throw;
+		}
+		catch (CORBA::Exception& ex)
+		{
+			TimeValue now = TimeService::getTAI(); // get time of the system
+
+			GCSException gcsex = DException::mapCORBAException(const_cast<CORBA::Exception&>(ex));
+
+			//receiveMonitorAlarm(dev, "DeviceNotFound", long(EventsAlarmsNRT_["DeviceNotFound"]), gcsex.toString(), now);
+
+			// subscribedMonitors_.erase(key.c_str());
+			// printf("\t[*] ELIMINANDO >> %s \n\n", key.c_str());
+		}
+	}
+}
+
+
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
+{
+	cout << "componentName" << endl;
+}
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, long value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, short value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, unsigned char value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray1D& value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray1D& value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray1D& value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray1D& value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray1D& value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray2D& value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray2D& value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray2D& value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray2D& value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray2D& value)
+{
+
+}
+void MonitorManagerIntegrationService::receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value)
+{
+
+}
+
+void MonitorManagerIntegrationService::receiveStateChange(const char* componentName, long time_stamp, const char* value)
+{
+
+}

@@ -6,7 +6,8 @@
 
 // Includes
 #include "MonitorManagerIntegrationServiceBase.h"
-
+#include "MonitorListYaml.cpp"
+#include <map>
 /**
 * 
 */
@@ -58,11 +59,38 @@ class MonitorManagerIntegrationService : public MonitorManagerIntegrationService
 	
 	//####################### SPECIFIC METHODS #############################
 	
+	
 
  //-----------------------------------------------------------------
  // protected section 
  //-----------------------------------------------------------------
  protected:
+
+ 	virtual void receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value);
+	virtual void receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value);
+	virtual void receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, long value);
+	virtual void receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, short value);
+	virtual void receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, unsigned char value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray1D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray1D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray1D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray1D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray1D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray2D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray2D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray2D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray2D& value);
+	virtual void receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray2D& value);
+	virtual void receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value);
+	virtual void receiveStateChange(const char* componentName, long time_stamp, const char* value);
+	
+ private:
+
+ 	using monitorsMap = std::map<std::string,MonitorListYaml>;
+	monitorsMap                         subscribedMonitors_;
+
+	void LoadYamlConfiguration();
+	void SubscribeMonitorList();
 };
 
 #endif // _MonitorManagerIntegrationService_h_ 

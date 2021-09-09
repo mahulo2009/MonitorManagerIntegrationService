@@ -97,13 +97,15 @@ protected:
 	/// Method to create monitors
 	void createMonitors_();
 
+	// Modifiable attributes (device properties)
+	std::string monitorsConfigurationPath_; ///<String property
+
+
 //-----------------------------------------------------------------
 // private section 
 //-----------------------------------------------------------------
  private:
 	
-	// Modifiable attributes (device properties)
-	std::string monitorsConfigurationPath_; ///<String property
 };
 
 #endif // _MonitorManagerIntegrationServiceBase_h_ 
