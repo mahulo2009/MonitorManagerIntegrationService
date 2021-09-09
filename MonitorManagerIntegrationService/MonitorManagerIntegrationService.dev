@@ -17,6 +17,20 @@ public abstract class MonitorManagerIntegrationService
   //  Device Magnitudes
   //----------------------------------------------------------------------
 
+  //----------------------------------------------------------------------
+  //  Device Properties
+  //----------------------------------------------------------------------
+
+  /**
+  * String property
+  * @property
+  * @description  Monitor Configuration Path
+  * @default      CARD1
+  * @maximum      ""
+  * @minimum      "" 
+  * @units        None 
+  */
+  private String monitorsConfigurationPath;
 
   //----------------------------------------------------------------------
   //  Application
