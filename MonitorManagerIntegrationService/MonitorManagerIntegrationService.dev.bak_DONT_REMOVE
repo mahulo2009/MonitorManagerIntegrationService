@@ -1,0 +1,74 @@
+// Copyright (c) 2012 Gran Telescopio de Canarias, S.A. (GRANTECAN)
+// All Rights Reserved
+
+package gtc.DSL.CK.GDEV;
+
+/**
+*
+*/
+public abstract class MonitorManagerIntegrationService 
+{
+  //----------------------------------------------------------------------
+  //  Specific methods
+  //----------------------------------------------------------------------
+
+
+  //----------------------------------------------------------------------
+  //  Device Magnitudes
+  //----------------------------------------------------------------------
+
+  //----------------------------------------------------------------------
+  //  Device Properties
+  //----------------------------------------------------------------------
+
+  /**
+  * String property
+  * @property
+  * @description  Monitor Configuration Path
+  * @default      CARD1
+  * @maximum      ""
+  * @minimum      "" 
+  * @units        None 
+  */
+  private String monitorsConfigurationPath;
+
+  //----------------------------------------------------------------------
+  //  Device Alarms
+  //----------------------------------------------------------------------
+
+  //----------------------------------------------------------------------
+  //  Instances of class InspectorDevice
+  //----------------------------------------------------------------------
+
+  /**
+  * MonitorManagerIntegrationService instance 
+  * @instance 
+  * @name      MonitorManagerIntegrationService
+  * @mode      INTEGRATED
+  * @priority  100
+  * @threads   4
+  */
+  private Device monitorManagerIntegrationService;    
+
+  //----------------------------------------------------------------------
+  //  Application
+  //----------------------------------------------------------------------
+
+  /** 
+  * @application
+  * @name monitorManagerIntegrationServiceApp
+  */
+  private Application monitorManagerIntegrationServiceApp;    
+
+  //----------------------------------------------------------------------
+  //  LCU
+  //----------------------------------------------------------------------
+
+  /** 
+  * The starts the applications
+  * @lcu
+  * @name VxLCU
+  */
+  private LCU monitorManagerIntegrationService_lcu;
+}
+
