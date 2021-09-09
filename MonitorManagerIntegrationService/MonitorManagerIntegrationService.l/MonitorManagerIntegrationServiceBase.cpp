@@ -140,7 +140,7 @@ void MonitorManagerIntegrationServiceBase::start()
 		}
 		catch(GCSException& ex)
 		{
-			logError_("unable to configure device");
+			//logError_("unable to configure device");
 			throw;
 		}
 		
@@ -269,7 +269,7 @@ void MonitorManagerIntegrationServiceBase::restore()
 	
 	if (isFault()==FALSE)
 	{
-		logError_("Restore is only posible in FAULT state");
+		//logError_("Restore is only posible in FAULT state");
 		throw WrongState(name_.c_str(),"Not in FAULT state. Unable to restore");
 	}
 	
@@ -306,7 +306,7 @@ void MonitorManagerIntegrationServiceBase::test()
 	{
 		if (isOn()==FALSE)
 		{
-			logError_("Test is only posible in ON state");
+			//logError_("Test is only posible in ON state");
 			throw WrongState(name_.c_str(),"Not in ON state. Unable to test");
 		}
 		
@@ -460,7 +460,7 @@ void MonitorManagerIntegrationServiceBase::monitorsConfigurationPath(const char*
 	catch(GCSException& ex)
 	{
 		ex.addToTrace("MonitorManagerIntegrationServiceBase::monitorsConfigurationPath"); 
-		logError_("Setting the monitorsConfigurationPath property\n");
+		//logError_("Setting the monitorsConfigurationPath property\n");
 		throw;
 	}
 	

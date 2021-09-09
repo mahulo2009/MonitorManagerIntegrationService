@@ -7,6 +7,7 @@
 // Includes
 #include "MonitorManagerIntegrationServiceBase.h"
 #include "MonitorListYaml.cpp"
+#include "FastDDSDispatcher.h"
 #include <map>
 /**
 * 
@@ -88,6 +89,7 @@ class MonitorManagerIntegrationService : public MonitorManagerIntegrationService
 
  	using monitorsMap = std::map<std::string,MonitorListYaml>;
 	monitorsMap                         subscribedMonitors_;
+	FastDDSDispatcher dispatcher_;
 
 	void LoadYamlConfiguration();
 	void SubscribeMonitorList();

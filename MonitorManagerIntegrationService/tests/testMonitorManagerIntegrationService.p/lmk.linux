@@ -1,2 +1,4 @@
 LDLIBS += -lMonitorManagerIntegrationService $(DSLPRO_DEV_LIBS) $(TAO_LIBS) $(SSL_LIBS)
 LDLIBS += $(YAMLCPP_LIBS)
+LDLIBS += -lfastrtps -lfastcdr
+LDLIBS += -lFastDDSGCSTypes

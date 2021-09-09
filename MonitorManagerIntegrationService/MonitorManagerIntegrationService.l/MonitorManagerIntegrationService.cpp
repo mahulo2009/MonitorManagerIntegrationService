@@ -60,7 +60,7 @@ void MonitorManagerIntegrationService::start()
 		}
 		catch(GCSException& ex)
 		{
-			logError_("unable to configure device");
+			//logError_("unable to configure device");
 			throw;
 		}
 		
@@ -192,7 +192,7 @@ void MonitorManagerIntegrationService::test()
 	{
 		if (isOn()==FALSE)
 		{
-			logError_("Test is only posible in ON state");
+			//logError_("Test is only posible in ON state");
 			throw WrongState(name_.c_str(),"Not in ON state. Unable to test");
 		}
 		
@@ -312,11 +312,13 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 		{
 			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
 			subscribeToDataBlocks("Test/InspectorDevice_1","doubleMonitor1");
+
+			dispatcher_.addMagnitudMonitor(key,"DoubleValue");
 		}
 		catch(GCSException& e)
 		{
 			e.addToTrace("TelemetryModuleNRT::SubscribeMonitorList()");
-			logError_("TelemetryModuleNRT::SubscribeMonitorList() exception - %s\n", e.toString());
+			//logError_("TelemetryModuleNRT::SubscribeMonitorList() exception - %s\n", e.toString());
 			trace_.err("TelemetryModuleNRT::SubscribeMonitorList() exception - %s\n", e.toString());
 			std::cout << "TelemetryModuleNRT::SubscribeMonitorList()" << endl;
 			throw;
@@ -326,11 +328,6 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 			TimeValue now = TimeService::getTAI(); // get time of the system
 
 			GCSException gcsex = DException::mapCORBAException(const_cast<CORBA::Exception&>(ex));
-
-			//receiveMonitorAlarm(dev, "DeviceNotFound", long(EventsAlarmsNRT_["DeviceNotFound"]), gcsex.toString(), now);
-
-			// subscribedMonitors_.erase(key.c_str());
-			// printf("\t[*] ELIMINANDO >> %s \n\n", key.c_str());
 		}
 	}
 }
@@ -338,7 +335,8 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
-	cout << "componentName" << endl;
+	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	dispatcher_.publish(key,value);
 }
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value)
 {
