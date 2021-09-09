@@ -33,6 +33,24 @@ public abstract class MonitorManagerIntegrationService
   private String monitorsConfigurationPath;
 
   //----------------------------------------------------------------------
+  //  Device Alarms
+  //----------------------------------------------------------------------
+
+  //----------------------------------------------------------------------
+  //  Instances of class InspectorDevice
+  //----------------------------------------------------------------------
+
+  /**
+  * MonitorManagerIntegrationService instance 
+  * @instance 
+  * @name      MonitorManagerIntegrationService
+  * @mode      INTEGRATED
+  * @priority  100
+  * @threads   4
+  */
+  private Device monitorManagerIntegrationService;    
+
+  //----------------------------------------------------------------------
   //  Application
   //----------------------------------------------------------------------
 
