@@ -1,0 +1,5 @@
+Telemetry:
+  Test/InspectorDevice_1/doubleMonitor1:
+    device  : Test/InspectorDevice_1
+    monitor : doubleMonitor1
+    units   : None
