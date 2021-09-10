@@ -313,7 +313,7 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 		try
 		{
 			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
-			subscribeToDataBlocks("Test/InspectorDevice_1","doubleMonitor1");
+			subscribeToDataBlocks(dev,mon);
 
 			dispatcher_.addMagnitudMonitor(key,"DoubleValue");
 		}
@@ -341,7 +341,7 @@ void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,
 	doubleSample.componentName(componentName);
 	doubleSample.magnitudeName(magnitudeName);
 	doubleSample.time_stamp(time_stamp);
-	doubleSample.time_stamp(value);
+	doubleSample.value(value);
 	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
 	dispatcher_.publish(key,doubleSample);
