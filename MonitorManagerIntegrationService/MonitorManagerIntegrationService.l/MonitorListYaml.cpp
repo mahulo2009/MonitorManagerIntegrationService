@@ -5,7 +5,7 @@
 #include "yaml-cpp/yaml.h"
 #include "yaml-cpp/parser.h"
 #include "yaml-cpp/exceptions.h"
-	
+
 struct MonitorListYaml
 { 
 public:

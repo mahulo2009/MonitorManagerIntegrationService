@@ -22,7 +22,7 @@ void FastDDSDispatcher::addMagnitudMonitor(const std::string & monitor_name,
     monitors[monitor_name]=monitor;
 }
 
-void FastDDSDispatcher::publish(const std::string & monitor_name, double value)
+void FastDDSDispatcher::publish(const std::string & monitor_name, DoubleValue &value)
 {
     monitors[monitor_name]->publish(value);
 }

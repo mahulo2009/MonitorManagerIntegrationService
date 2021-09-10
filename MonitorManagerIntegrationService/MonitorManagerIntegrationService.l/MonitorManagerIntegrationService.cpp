@@ -4,6 +4,8 @@
 // Includes
 #include "MonitorManagerIntegrationService.h"
 
+#include "DoubleValue.h"
+
 //----------------------------------------------------------------------
 // Device Constructor
 //----------------------------------------------------------------------
@@ -335,8 +337,14 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
+	DoubleValue doubleSample;
+	doubleSample.componentName(componentName);
+	doubleSample.magnitudeName(magnitudeName);
+	doubleSample.time_stamp(time_stamp);
+	doubleSample.time_stamp(value);
+	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
-	dispatcher_.publish(key,value);
+	dispatcher_.publish(key,doubleSample);
 }
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value)
 {

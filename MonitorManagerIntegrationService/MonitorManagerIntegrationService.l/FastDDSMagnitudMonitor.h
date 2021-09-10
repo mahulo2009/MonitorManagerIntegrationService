@@ -9,6 +9,8 @@
 #include <fastdds/dds/publisher/DataWriterListener.hpp>
 
 using namespace eprosima::fastdds::dds;
+
+#include "DoubleValue.h"
 	
 class FastDDSMagnitudMonitor
 { 
@@ -17,7 +19,7 @@ public:
                             const std::string & monitor_type_name,
                             DomainParticipant *participant);
 
-    void publish(double value);
+    void publish(DoubleValue &value);
     
 private:
 

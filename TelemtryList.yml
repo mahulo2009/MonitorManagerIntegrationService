@@ -3,3 +3,7 @@ Telemetry:
     device  : Test/InspectorDevice_1
     monitor : doubleMonitor1
     units   : None
+  Test/InspectorDevice_1/doubleMonitor2:
+    device  : Test/InspectorDevice_1
+    monitor : doubleMonitor2
+    units   : None    

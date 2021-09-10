@@ -12,10 +12,9 @@ FastDDSMagnitudMonitor::FastDDSMagnitudMonitor(const std::string & monitor_name,
     writer_ = publisher_->create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, nullptr);
 }
 
-void FastDDSMagnitudMonitor::publish(double value)
+void FastDDSMagnitudMonitor::publish(DoubleValue &value)
 {
     DoubleValue fastdds_value;
 
-    toIDL(value,fastdds_value);
-    writer_->write(&fastdds_value);
+    writer_->write(&value);
 }
