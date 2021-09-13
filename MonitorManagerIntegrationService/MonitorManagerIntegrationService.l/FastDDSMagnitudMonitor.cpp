@@ -1,6 +1,5 @@
 #include "FastDDSMagnitudMonitor.h"
 
-#include "FastDDS_Adapters.h"
 #include "DoubleValuePubSubTypes.h"
 
 FastDDSMagnitudMonitor::FastDDSMagnitudMonitor(const std::string & monitor_name, 
@@ -14,7 +13,10 @@ FastDDSMagnitudMonitor::FastDDSMagnitudMonitor(const std::string & monitor_name,
 
 void FastDDSMagnitudMonitor::publish(DoubleValue &value)
 {
-    DoubleValue fastdds_value;
+    writer_->write(&value);
+}
 
+void FastDDSMagnitudMonitor::publish(DoubleArrayValue &value)
+{
     writer_->write(&value);
 }

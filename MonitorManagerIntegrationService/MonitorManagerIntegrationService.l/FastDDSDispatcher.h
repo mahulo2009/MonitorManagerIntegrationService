@@ -13,6 +13,7 @@ using namespace eprosima::fastdds::dds;
 #include "FastDDSMagnitudMonitor.h"
 #include <map>
 #include "DoubleValue.h"
+#include "DoubleArrayValue.h"
 	
 class FastDDSDispatcher
 { 
@@ -23,6 +24,7 @@ public:
                                 const std::string & monitor_type_name);
 
     void publish(const std::string & monitor_name, DoubleValue &value);
+    void publish(const std::string & monitor_name, DoubleArrayValue &value);
 
 private:
     DomainParticipant *participant_;   

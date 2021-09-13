@@ -5,6 +5,7 @@
 #include "MonitorManagerIntegrationService.h"
 
 #include "DoubleValue.h"
+#include "DoubleArrayValue.h"
 
 //----------------------------------------------------------------------
 // Device Constructor
@@ -309,13 +310,14 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 		const char* dev   = m.GetDeviceName();
 		const char* mon   = m.GetMonitorName();
 		const char* units = m.GetUnits();
+		const char* type = m.GetType();
 
 		try
 		{
 			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
 			subscribeToDataBlocks(dev,mon);
 
-			dispatcher_.addMagnitudMonitor(key,"DoubleValue");
+			dispatcher_.addMagnitudMonitor(key,type); 
 		}
 		catch(GCSException& e)
 		{
@@ -334,8 +336,7 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 	}
 }
 
-
-void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
+void MonitorManagerIntegrationService::receiveMonitorScalar_(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
 	DoubleValue doubleSample;
 	doubleSample.componentName(componentName);
@@ -346,46 +347,87 @@ void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
 	dispatcher_.publish(key,doubleSample);
 }
-void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value)
-{
 
+void MonitorManagerIntegrationService::receiveMonitorArray_(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector<double> & value)
+{
+	DoubleArrayValue doubleArraySample;
+	doubleArraySample.componentName(componentName);
+	doubleArraySample.magnitudeName(magnitudeName);
+	doubleArraySample.time_stamp(time_stamp);
+	doubleArraySample.value(value);
+	
+	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	dispatcher_.publish(key,doubleArraySample);	
+}
+
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
+{
+	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
+}
+void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, float value)
+{	
+	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
 }
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, long value)
 {
-
+	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
 }
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, short value)
 {
-
+	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
 }
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, unsigned char value)
 {
-
+	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray1D& value)
 {
 
+	std::vector<double> values;
+	for (auto v : value) 	
+		values.push_back(v);
+	
+	receiveMonitorArray_(componentName,magnitudeName,time_stamp, values);
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray1D& value)
 {
+	std::vector<double> values;
+	for (auto v : value) 	
+		values.push_back(v);
+	
+	receiveMonitorArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray1D& value)
 {
+	std::vector<double> values;
+	for (auto v : value) 	
+		values.push_back(v);
+	
+	receiveMonitorArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray1D& value)
 {
+	std::vector<double> values;
+	for (auto v : value) 	
+		values.push_back(v);
+	
+	receiveMonitorArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray1D& value)
 {
-
+	std::vector<double> values;
+	for (auto v : value) 	
+		values.push_back(v);
+	
+	receiveMonitorArray_(componentName,magnitudeName,time_stamp, values);
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray2D& value)
 {
-
+	//todo
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray2D& value)

@@ -12,16 +12,18 @@ public:
 	std::string deviceName_;
    	std::string monitorName_;
    	std::string units_;
+	std::string type_;
 	
 	// constructors
 	MonitorListYaml()
 	{
 	};
 
-	MonitorListYaml(const char* Device, const char* Name, const char* Units)
+	MonitorListYaml(const char* Device, const char* Name, const char* Units,const char* Type)
     : deviceName_(Device),
-	monitorName_(Name),
-    units_(Units)
+		monitorName_(Name),
+    	units_(Units),
+		type_(Type)
 	{
 	};
 
@@ -34,6 +36,7 @@ public:
 	const char* GetDeviceName() const { return this->deviceName_.c_str(); };
 	const char* GetMonitorName() const { return this->monitorName_.c_str(); };
 	const char* GetUnits() const { return this->units_.c_str(); };
+	const char* GetType() const { return this->type_.c_str(); };
 
 	//Setters
 	void SetUnits(const char* value) { this->units_ = value; };
@@ -49,6 +52,7 @@ namespace YAML
 			mon.deviceName_	 = node["device" ].as<std::string>();
 			mon.monitorName_ = node["monitor"].as<std::string>();
 			mon.units_    	 = node["units"  ].as<std::string>();
+			mon.type_    	 = node["type"  ].as<std::string>();
 
 			return true;
 		};
