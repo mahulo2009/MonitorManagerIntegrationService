@@ -1,12 +1,7 @@
 Telemetry:
-  Test/InspectorDevice_1/doubleMonitor1:
+  Test/InspectorDevice_1/doubleArray2DMonitor:
     device  : Test/InspectorDevice_1
-    monitor : doubleMonitor1
-    type    : DoubleValue
-    units   : None    
-  Test/InspectorDevice_1/doubleArray1DMonitor:
-    device  : Test/InspectorDevice_1
-    monitor : doubleArray1DMonitor
-    type    : DoubleArrayValue
+    monitor : doubleArray2DMonitor
+    type    : Double2DArrayValue
     units   : None
     

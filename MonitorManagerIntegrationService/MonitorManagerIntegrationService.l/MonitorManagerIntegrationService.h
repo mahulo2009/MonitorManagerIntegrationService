@@ -87,8 +87,12 @@ class MonitorManagerIntegrationService : public MonitorManagerIntegrationService
 	virtual void receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value);
 	virtual void receiveStateChange(const char* componentName, long time_stamp, const char* value);
 
-	void receiveMonitorScalar_(const char* componentName,const char* magnitudeName,long time_stamp, double value);
-	void receiveMonitorArray_(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector<double> & value);
+	void receiveMonitorScalar_
+		(const char* componentName,const char* magnitudeName,long time_stamp, double value);
+	void receiveMonitorArray_
+		(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector<double> & value);
+	void receiveMonitor2DArray_
+		(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector< std::vector<double> > & value);
 	
  private:
 

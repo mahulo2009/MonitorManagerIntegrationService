@@ -20,3 +20,8 @@ void FastDDSMagnitudMonitor::publish(DoubleArrayValue &value)
 {
     writer_->write(&value);
 }
+
+void FastDDSMagnitudMonitor::publish(Double2DArrayValue &value)
+{
+    writer_->write(&value);
+}

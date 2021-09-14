@@ -3,6 +3,7 @@
 
 #include "DoubleValuePubSubTypes.h"
 #include "DoubleArrayValuePubSubTypes.h"
+#include "Double2DArrayValuePubSubTypes.h"
 
 FastDDSDispatcher::FastDDSDispatcher()
 {
@@ -12,8 +13,10 @@ FastDDSDispatcher::FastDDSDispatcher()
 
     TypeSupport type1_ (new DoubleValuePubSubType());
     TypeSupport type2_ (new DoubleArrayValuePubSubType()); //todo all participant register all types?
+    TypeSupport type3_ (new Double2DArrayValuePubSubType()); //todo all participant register all types?
     type1_.register_type(participant_);
     type2_.register_type(participant_); //todo
+    type3_.register_type(participant_); //todo
 }
 
 void FastDDSDispatcher::addMagnitudMonitor(const std::string & monitor_name, 
@@ -32,6 +35,11 @@ void FastDDSDispatcher::publish(const std::string & monitor_name, DoubleValue &v
 }
 
 void FastDDSDispatcher::publish(const std::string & monitor_name, DoubleArrayValue &value)
+{
+    monitors[monitor_name]->publish(value);
+}
+
+void FastDDSDispatcher::publish(const std::string & monitor_name, Double2DArrayValue &value)
 {
     monitors[monitor_name]->publish(value);
 }

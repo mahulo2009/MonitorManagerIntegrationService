@@ -6,6 +6,7 @@
 
 #include "DoubleValue.h"
 #include "DoubleArrayValue.h"
+#include "Double2DArrayValue.h"
 
 //----------------------------------------------------------------------
 // Device Constructor
@@ -360,6 +361,20 @@ void MonitorManagerIntegrationService::receiveMonitorArray_(const char* componen
 	dispatcher_.publish(key,doubleArraySample);	
 }
 
+void MonitorManagerIntegrationService::receiveMonitor2DArray_(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector< std::vector<double> > & value)
+{
+	Double2DArrayValue doubleArraySample;
+	
+	doubleArraySample.componentName(componentName);
+	doubleArraySample.magnitudeName(magnitudeName);
+	doubleArraySample.time_stamp(time_stamp);
+	doubleArraySample.value(value);
+	
+	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	dispatcher_.publish(key,doubleArraySample);	
+}
+
+
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
 	receiveMonitorScalar_(componentName,magnitudeName,time_stamp, value);
@@ -382,7 +397,6 @@ void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,
 }
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray1D& value)
 {
-
 	std::vector<double> values;
 	for (auto v : value) 	
 		values.push_back(v);
@@ -427,26 +441,86 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, DoubleArray2D& value)
 {
-	//todo
+	//todo due a bug in DCF this method is not called.
+	std::vector< std::vector<double> > values;
+	for(int i =0;i< value.height();i++)
+	{
+		std::vector<double> innerValues;
+		for(int j =0;j< value.width();j++)
+		{
+			innerValues.push_back(value[i][j]);
+		}
+		values.push_back(innerValues);
+	}
+	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
+
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray2D& value)
 {
+	//todo due a bug in DCF this method is not called.
+	std::vector< std::vector<double> > values;
+	for(int i =0;i< value.height();i++)
+	{
+		std::vector<double> innerValues;
+		for(int j =0;j< value.width();j++)
+		{
+			innerValues.push_back(value[i][j]);
+		}
+		values.push_back(innerValues);
+	}
+	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray2D& value)
 {
+	//todo due a bug in DCF this method is not called.
+	std::vector< std::vector<double> > values;
+	for(int i =0;i< value.height();i++)
+	{
+		std::vector<double> innerValues;
+		for(int j =0;j< value.width();j++)
+		{
+			innerValues.push_back(value[i][j]);
+		}
+		values.push_back(innerValues);
+	}
+	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray2D& value)
 {
+	//todo due a bug in DCF this method is not called.
+	std::vector< std::vector<double> > values;
+	for(int i =0;i< value.height();i++)
+	{
+		std::vector<double> innerValues;
+		for(int j =0;j< value.width();j++)
+		{
+			innerValues.push_back(value[i][j]);
+		}
+		values.push_back(innerValues);
+	}
+	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, OctetArray2D& value)
 {
+	//todo due a bug in DCF this method is not called.
+	std::vector< std::vector<double> > values;
+	for(int i =0;i< value.height();i++)
+	{
+		std::vector<double> innerValues;
+		for(int j =0;j< value.width();j++)
+		{
+			innerValues.push_back(value[i][j]);
+		}
+		values.push_back(innerValues);
+	}
+	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
 
 }
 void MonitorManagerIntegrationService::receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value)
