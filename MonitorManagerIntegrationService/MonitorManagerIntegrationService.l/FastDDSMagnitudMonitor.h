@@ -13,6 +13,8 @@ using namespace eprosima::fastdds::dds;
 #include "DoubleValue.h"
 #include "DoubleArrayValue.h"
 #include "Double2DArrayValue.h"
+#include "EnumValue.h"
+#include "StateValue.h"
 	
 class FastDDSMagnitudMonitor
 { 
@@ -24,6 +26,9 @@ public:
     void publish(DoubleValue &value);
     void publish(DoubleArrayValue &value);
     void publish(Double2DArrayValue &value);
+    void publish(EnumValue &value);
+    void publish(StateValue &value);
+
     
 private:
 

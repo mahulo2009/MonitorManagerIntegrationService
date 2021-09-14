@@ -15,6 +15,9 @@ using namespace eprosima::fastdds::dds;
 #include "DoubleValue.h"
 #include "DoubleArrayValue.h"
 #include "Double2DArrayValue.h"
+#include "EnumValue.h"
+#include "StateValue.h"
+
 	
 class FastDDSDispatcher
 { 
@@ -27,6 +30,9 @@ public:
     void publish(const std::string & monitor_name, DoubleValue &value);
     void publish(const std::string & monitor_name, DoubleArrayValue &value);
     void publish(const std::string & monitor_name, Double2DArrayValue &value);
+    void publish(const std::string & monitor_name, EnumValue &value);
+    void publish(const std::string & monitor_name, StateValue &value);
+
 
 private:
     DomainParticipant *participant_;   

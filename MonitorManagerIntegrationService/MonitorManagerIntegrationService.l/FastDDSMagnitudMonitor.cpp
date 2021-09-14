@@ -25,3 +25,12 @@ void FastDDSMagnitudMonitor::publish(Double2DArrayValue &value)
 {
     writer_->write(&value);
 }
+
+void FastDDSMagnitudMonitor::publish(EnumValue &value)
+{
+    writer_->write(&value);
+}    
+void FastDDSMagnitudMonitor::publish(StateValue &value)
+{
+    writer_->write(&value);
+}

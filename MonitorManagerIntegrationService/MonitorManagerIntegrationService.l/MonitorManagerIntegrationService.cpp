@@ -7,6 +7,8 @@
 #include "DoubleValue.h"
 #include "DoubleArrayValue.h"
 #include "Double2DArrayValue.h"
+#include "EnumValue.h"
+#include "StateValue.h"
 
 //----------------------------------------------------------------------
 // Device Constructor
@@ -287,7 +289,7 @@ void MonitorManagerIntegrationService::LoadYamlConfiguration()
 
 			std::string     key	= monitor.first.as<std::string>();
 			MonitorListYaml m	= monitor.second.as<MonitorListYaml>();
-			
+						
 			//Loading the unordered map
 			subscribedMonitors_[key] = m;			
 		}	
@@ -316,9 +318,16 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 		try
 		{
 			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
-			subscribeToDataBlocks(dev,mon);
-
+			
 			dispatcher_.addMagnitudMonitor(key,type); 
+
+			if ( type == std::string("EnumValue") ) {				
+				subscribeToMagnitudeChanges(dev,mon);	
+			} else if ( type == std::string("StateValue") ) {
+				subscribeToStateChanges(dev);	
+			} else {
+				subscribeToDataBlocks(dev,mon);	
+			}			
 		}
 		catch(GCSException& e)
 		{
@@ -525,10 +534,29 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 }
 void MonitorManagerIntegrationService::receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value)
 {
+	cout << "receiveMagnitudeChange " << componentName << " " << magnitudeName << "  " << time_stamp << " " << value << endl;
 
+	EnumValue sample;	//todo change statue for enum
+	sample.componentName(componentName);
+	sample.magnitudeName(magnitudeName);
+	sample.time_stamp(time_stamp);
+	sample.value(value);
+	
+	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	dispatcher_.publish(key,sample);	
+	
 }
 
 void MonitorManagerIntegrationService::receiveStateChange(const char* componentName, long time_stamp, const char* value)
 {
+	cout << "receiveStateChange " << componentName << " " << time_stamp << " " << value << endl;
+
+	StateValue sample;	//todo change statue for enum
+	sample.componentName(componentName);
+	sample.time_stamp(time_stamp);
+	sample.value(value);
+	
+	std::string key = std::string(componentName);
+	dispatcher_.publish(key,sample);	
 
 }

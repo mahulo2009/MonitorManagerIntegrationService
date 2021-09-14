@@ -1,7 +1,9 @@
-Telemetry:
-  Test/InspectorDevice_1/doubleArray2DMonitor:
+Telemetry:  
+  Test/InspectorDevice_1:
     device  : Test/InspectorDevice_1
-    monitor : doubleArray2DMonitor
-    type    : Double2DArrayValue
+    monitor : None
+    type    : StateValue
     units   : None
+
+
     
