@@ -1,9 +1,31 @@
 Telemetry:  
+
+  Test/InspectorDevice_1/doubleMonitor1:
+    device  : Test/InspectorDevice_1
+    monitor : doubleMonitor1
+    type    : DoubleValue
+    units   : None
+
+  Test/InspectorDevice_1/doubleArray1DMonitor:
+    device  : Test/InspectorDevice_1
+    monitor : doubleArray1DMonitor
+    type    : DoubleArrayValue
+    units   : None
+
   Test/InspectorDevice_1:
     device  : Test/InspectorDevice_1
     monitor : None
     type    : StateValue
     units   : None
+      
+  Test/InspectorDevice_1/boolMonitor1:
+    device  : Test/InspectorDevice_1
+    monitor : boolMonitor1
+    type    : StateValue
+    units   : None
 
-
-    
+  Test/InspectorDevice_1/enumMonitor1:
+    device  : Test/InspectorDevice_1
+    monitor : enumMonitor1
+    type    : EnumValue
+    units   : None
