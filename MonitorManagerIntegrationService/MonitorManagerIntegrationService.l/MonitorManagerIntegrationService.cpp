@@ -355,6 +355,8 @@ void MonitorManagerIntegrationService::receiveMonitorScalar_(const char* compone
 	doubleSample.value(value);
 	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	std::replace(key.begin(),key.end(),'/','.');
+
 	dispatcher_.publish(key,doubleSample);
 }
 
@@ -367,6 +369,8 @@ void MonitorManagerIntegrationService::receiveMonitorArray_(const char* componen
 	doubleArraySample.value(value);
 	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	std::replace(key.begin(),key.end(),'/','.');
+
 	dispatcher_.publish(key,doubleArraySample);	
 }
 
@@ -380,9 +384,10 @@ void MonitorManagerIntegrationService::receiveMonitor2DArray_(const char* compon
 	doubleArraySample.value(value);
 	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
+	std::replace(key.begin(),key.end(),'/','.');
+
 	dispatcher_.publish(key,doubleArraySample);	
 }
-
 
 void MonitorManagerIntegrationService::receiveMonitor(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
@@ -462,7 +467,6 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 		values.push_back(innerValues);
 	}
 	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
-
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, FloatArray2D& value)
@@ -479,7 +483,6 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 		values.push_back(innerValues);
 	}
 	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
-
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, LongArray2D& value)
@@ -496,7 +499,6 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 		values.push_back(innerValues);
 	}
 	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
-
 }
 
 void MonitorManagerIntegrationService::receiveArrayMonitor(const char* componentName,const char* magnitudeName,long time_stamp, ShortArray2D& value)
@@ -530,12 +532,10 @@ void MonitorManagerIntegrationService::receiveArrayMonitor(const char* component
 		values.push_back(innerValues);
 	}
 	receiveMonitor2DArray_(componentName,magnitudeName,time_stamp, values);
-
 }
+
 void MonitorManagerIntegrationService::receiveMagnitudeChange(const char* componentName,const char* magnitudeName,long time_stamp, long value)
 {
-	cout << "receiveMagnitudeChange " << componentName << " " << magnitudeName << "  " << time_stamp << " " << value << endl;
-
 	EnumValue sample;	//todo change statue for enum
 	sample.componentName(componentName);
 	sample.magnitudeName(magnitudeName);
@@ -543,14 +543,13 @@ void MonitorManagerIntegrationService::receiveMagnitudeChange(const char* compon
 	sample.value(value);
 	
 	std::string key = std::string(componentName)+"/"+std::string(magnitudeName);
-	dispatcher_.publish(key,sample);	
-	
+	std::replace(key.begin(),key.end(),'/','.');
+
+	dispatcher_.publish(key,sample);		
 }
 
 void MonitorManagerIntegrationService::receiveStateChange(const char* componentName, long time_stamp, const char* value)
 {
-	cout << "receiveStateChange " << componentName << " " << time_stamp << " " << value << endl;
-
 	StateValue sample;	//todo change statue for enum
 	sample.componentName(componentName);
 	sample.time_stamp(time_stamp);
@@ -558,5 +557,4 @@ void MonitorManagerIntegrationService::receiveStateChange(const char* componentN
 	
 	std::string key = std::string(componentName);
 	dispatcher_.publish(key,sample);	
-
 }
