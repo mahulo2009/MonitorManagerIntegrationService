@@ -31,4 +31,4 @@ min_value   = string : ""
 # Default configuration
 #--------------------------------------------------------------
 [ Configuration MonitorManagerIntegrationService.Default ]
-monitorsConfigurationPath = string : /work/mhuertas/src_c++/gtc/MonitorManagerIntegrationService/TelemtryList.yml
+monitorsConfigurationPath = string : /work/gcsop/src_c++/gtc/MonitorManagerIntegrationService/TelemtryList.yml
