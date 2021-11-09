@@ -1,0 +1,301 @@
+Telemetry:
+  ECM.EMCS.IndoorSensors1.humidity:
+    device: ECM/EMCS/IndoorSensors1
+    monitor: humidity
+    type: DoubleValue
+    units: None
+  ECM.EMCS.IndoorSensors1.temperature:
+    device: ECM/EMCS/IndoorSensors1
+    monitor: temperature
+    type: DoubleValue
+    units: None
+  ECM.EMCS.StructureSensors1.temperature:
+    device: ECM/EMCS/StructureSensors1
+    monitor: temperature
+    type: DoubleValue
+    units: None
+  ECM.EMCS.THMonitoring1.dewPoint:
+    device: ECM/EMCS/THMonitoring1
+    monitor: dewPoint
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.dewPoint:
+    device: EMCS/WeatherStation
+    monitor: dewPoint
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.humidity:
+    device: EMCS/WeatherStation
+    monitor: humidity
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.meanWindSpeed:
+    device: EMCS/WeatherStation
+    monitor: meanWindSpeed
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.peakWindSpeed:
+    device: EMCS/WeatherStation
+    monitor: peakWindSpeed
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.pressure:
+    device: EMCS/WeatherStation
+    monitor: pressure
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.temperature:
+    device: EMCS/WeatherStation
+    monitor: temperature
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.windDirection:
+    device: EMCS/WeatherStation
+    monitor: windDirection
+    type: DoubleValue
+    units: None
+  EMCS.WeatherStation.windSpeed:
+    device: EMCS/WeatherStation
+    monitor: windSpeed
+    type: DoubleValue
+    units: None
+  FCCS_E.AGArm.position:
+    device: FCCS_E/AGArm
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_E.AGFocus.position:
+    device: FCCS_E/AGFocus
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_E.AGTurnTable.position:
+    device: FCCS_E/AGTurnTable
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_E.Rotator.position:
+    device: FCCS_E/Rotator
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_E.Rotator.speed:
+    device: FCCS_E/Rotator
+    monitor: speed
+    type: DoubleValue
+    units: None
+  FCCS_F.AGArm.position:
+    device: FCCS_F/AGArm
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_F.AGFocus.position:
+    device: FCCS_F/AGFocus
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_F.AGTurnTable.position:
+    device: FCCS_F/AGTurnTable
+    monitor: position
+    type: DoubleValue
+    units: None
+  FCCS_F.Rotator.position:
+    device: FCCS_F/Rotator
+    monitor: position
+    type: DoubleValue
+    units: None
+  MACS.AzimuthAxis.followingError:
+    device: MACS/AzimuthAxis
+    monitor: followingError
+    type: DoubleValue
+    units: None
+  MACS.AzimuthAxis.position:
+    device: MACS/AzimuthAxis
+    monitor: position
+    type: DoubleValue
+    units: None
+  MACS.ElevationAxis.position:
+    device: MACS/ElevationAxis
+    monitor: position
+    type: DoubleValue
+    units: None
+  MACS.NasmythRotatorA.position:
+    device: MACS/NasmythRotatorA
+    monitor: position
+    type: DoubleValue
+    units: None
+  MACS.NasmythRotatorB.position:
+    device: MACS/NasmythRotatorB
+    monitor: position
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.airmass:
+    device: OE/ObservingEngine
+    monitor: airmass
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentAzimuth:
+    device: OE/ObservingEngine
+    monitor: currentAzimuth
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentDeclination:
+    device: OE/ObservingEngine
+    monitor: currentDeclination
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentDomeRotationPosition:
+    device: OE/ObservingEngine
+    monitor: currentDomeRotationPosition
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentElevation:
+    device: OE/ObservingEngine
+    monitor: currentElevation
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentIPA:
+    device: OE/ObservingEngine
+    monitor: currentIPA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentRA:
+    device: OE/ObservingEngine
+    monitor: currentRA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.currentRMA:
+    device: OE/ObservingEngine
+    monitor: currentRMA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedAzimuth:
+    device: OE/ObservingEngine
+    monitor: demandedAzimuth
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedDeclination:
+    device: OE/ObservingEngine
+    monitor: demandedDeclination
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedElevation:
+    device: OE/ObservingEngine
+    monitor: demandedElevation
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedIPA:
+    device: OE/ObservingEngine
+    monitor: demandedIPA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedRA:
+    device: OE/ObservingEngine
+    monitor: demandedRA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.demandedRMA:
+    device: OE/ObservingEngine
+    monitor: demandedRMA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.moonAzimuth:
+    device: OE/ObservingEngine
+    monitor: moonAzimuth
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.moonDistance:
+    device: OE/ObservingEngine
+    monitor: moonDistance
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.moonElevation:
+    device: OE/ObservingEngine
+    monitor: moonElevation
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.moonIllumination:
+    device: OE/ObservingEngine
+    monitor: moonIllumination
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.moonPhase:
+    device: OE/ObservingEngine
+    monitor: moonPhase
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.parallacticAngle:
+    device: OE/ObservingEngine
+    monitor: parallacticAngle
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.pointingOriginBase:
+    device: OE/ObservingEngine
+    monitor: pointingOriginBase
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.pointingOriginEffective:
+    device: OE/ObservingEngine
+    monitor: pointingOriginEffective
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.pointingOriginOffset:
+    device: OE/ObservingEngine
+    monitor: pointingOriginOffset
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.siderealTime:
+    device: OE/ObservingEngine
+    monitor: siderealTime
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideCorrectionA:
+    device: OE/ObservingEngine
+    monitor: slowGuideCorrectionA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideCorrectionB:
+    device: OE/ObservingEngine
+    monitor: slowGuideCorrectionB
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideErrorA:
+    device: OE/ObservingEngine
+    monitor: slowGuideErrorA
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideErrorB:
+    device: OE/ObservingEngine
+    monitor: slowGuideErrorB
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideFlux:
+    device: OE/ObservingEngine
+    monitor: slowGuideFlux
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.slowGuideFwhm:
+    device: OE/ObservingEngine
+    monitor: slowGuideFwhm
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.sunAzimuth:
+    device: OE/ObservingEngine
+    monitor: sunAzimuth
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.sunDistance:
+    device: OE/ObservingEngine
+    monitor: sunDistance
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.sunElevation:
+    device: OE/ObservingEngine
+    monitor: sunElevation
+    type: DoubleValue
+    units: None
+  OE.ObservingEngine.timeToTarget:
+    device: OE/ObservingEngine
+    monitor: timeToTarget
+    type: DoubleValue
+    units: None

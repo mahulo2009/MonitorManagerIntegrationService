@@ -318,7 +318,8 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 		try
 		{
 			trace_.out("[*] SUBSCRIBED MONITOR >> %s { %s, %s } \n\n", key.c_str(), dev, mon);
-			
+
+            //todo check if the type is correct
 			dispatcher_.addMagnitudMonitor(key,type); 
 
 			if ( type == std::string("EnumValue") ) {				
@@ -348,6 +349,8 @@ void MonitorManagerIntegrationService::SubscribeMonitorList()
 
 void MonitorManagerIntegrationService::receiveMonitorScalar_(const char* componentName,const char* magnitudeName,long time_stamp, double value)
 {
+    trace_.out("receiveMonitorScalar [%s,%s,%ld,%f]\n",componentName,magnitudeName,time_stamp,value);
+
 	DoubleValue doubleSample;
 	doubleSample.componentName(componentName);
 	doubleSample.magnitudeName(magnitudeName);
@@ -362,6 +365,8 @@ void MonitorManagerIntegrationService::receiveMonitorScalar_(const char* compone
 
 void MonitorManagerIntegrationService::receiveMonitorArray_(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector<double> & value)
 {
+    trace_.out("receiveMonitorArray [%s,%s,%ld]\n",componentName,magnitudeName,time_stamp);
+
 	DoubleArrayValue doubleArraySample;
 	doubleArraySample.componentName(componentName);
 	doubleArraySample.magnitudeName(magnitudeName);
@@ -376,6 +381,8 @@ void MonitorManagerIntegrationService::receiveMonitorArray_(const char* componen
 
 void MonitorManagerIntegrationService::receiveMonitor2DArray_(const char* componentName,const char* magnitudeName,long time_stamp, const std::vector< std::vector<double> > & value)
 {
+    trace_.out("receiveMonitor2DArray [%s,%s,%ld]\n",componentName,magnitudeName,time_stamp);
+
 	Double2DArrayValue doubleArraySample;
 	
 	doubleArraySample.componentName(componentName);

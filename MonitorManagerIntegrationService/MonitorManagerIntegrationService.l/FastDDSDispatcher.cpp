@@ -34,7 +34,7 @@ void FastDDSDispatcher::addMagnitudMonitor(const std::string & monitor_name,
     FastDDSMagnitudMonitor * monitor 
         = new FastDDSMagnitudMonitor(monitor_name,monitor_type_name,participant_);
     
-    std::cout << "monitor_name " << monitor_name << std::endl;
+    std::cout << "monitor_name " << monitor_name << " monitor_type " << monitor_type_name << std::endl;
 
     monitors[monitor_name]=monitor;
 }
